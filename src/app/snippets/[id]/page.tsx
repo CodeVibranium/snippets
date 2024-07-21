@@ -16,6 +16,11 @@ interface Snippet {
 }
 type SnippetOrNull = Snippet | null;
 
+async function getAllIds() {
+  const snippets = await db.snippet.findMany({ select: { id: true } });
+  return snippets;
+}
+
 async function SnippetPage(props: SnippetPageProps) {
   await new Promise((res, rej) => {
     setTimeout(() => {
