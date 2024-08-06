@@ -14,6 +14,7 @@ export async function updateSnippetHelper(
     console.log(error);
     // Handle error if needed
   } finally {
+    revalidatePath(`/snippets/${id}`);
     // Ensure redirect is called in both success and error cases
     redirect("/");
   }

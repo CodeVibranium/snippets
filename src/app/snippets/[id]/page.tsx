@@ -16,9 +16,9 @@ interface Snippet {
 }
 type SnippetOrNull = Snippet | null;
 
-async function getAllIds() {
+export async function generateStaticParams() {
   const snippets = await db.snippet.findMany({ select: { id: true } });
-  return snippets;
+  return snippets.map((snippet) => ({ id: snippet.id.toString() }));
 }
 
 async function SnippetPage(props: SnippetPageProps) {
